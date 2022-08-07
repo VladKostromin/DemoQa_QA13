@@ -1,10 +1,7 @@
 package manage;
 
 import dto.Student;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -121,5 +118,19 @@ public class StudentHelper extends HelperBase {
         element.sendKeys(Keys.TAB);
         element.clear();
         element.sendKeys(text);
+    }
+
+    public void submitForm() {
+        hideFooter();
+        webDriver.findElement(By.id("submit")).click();
+    }
+
+    private void hideFooter() {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("document.querySelector('footer').style.display='none';");
+    }
+
+    public boolean isSubmitFormPresent() {
+        return webDriver.findElement(By.id("example-modal-sizes-title-lg")).getText().contains("Thanks for submitting the form");
     }
 }

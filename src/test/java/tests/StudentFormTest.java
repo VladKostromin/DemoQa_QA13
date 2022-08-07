@@ -1,6 +1,7 @@
 package tests;
 
 import dto.Student;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -28,5 +29,7 @@ public class StudentFormTest extends TestBase {
                 .city("Karnal")
                 .build();
         app.getStudent().fillStudentForm(student);
+        app.getStudent().submitForm();
+        Assert.assertTrue(app.getStudent().isSubmitFormPresent());
     }
 }

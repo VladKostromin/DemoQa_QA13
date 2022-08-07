@@ -14,7 +14,7 @@ public class TestBase {
 
     @AfterSuite
     public void tearDown() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         app.stop();
     }
 
